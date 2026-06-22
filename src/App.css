@@ -1,38 +1,382 @@
-.App {
+/* ================= GLOBAL & TYPOGRAPHY ================= */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #ffffff;
+  font-family:
+    "Inter",
+    -apple-system,
+    sans-serif;
+  color: #111111;
+  overflow: hidden; /* ANTI-SCROLL */
+}
+
+.app-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.text-center {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+.mb-3 {
+  margin-bottom: 1rem;
+}
+.mb-4 {
+  margin-bottom: 1.5rem;
+}
+.mb-5 {
+  margin-bottom: 2.5rem;
+}
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.w-100 {
+  width: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* ================= TYPOGRAPHY ================= */
+.title-main {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.subtitle {
+  color: #6b7280;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+/* ================= COMPONENTS ================= */
+.screen-center {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  height: 100%;
+  padding: 1.5rem;
+}
+
+.app-icon {
+  background-color: #0b0c10;
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.emoji-large {
+  font-size: 2.5rem;
+}
+
+.btn-primary {
+  background-color: #0a0a0b;
+  color: #ffffff;
+  border: none;
+  padding: 1rem;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* ================= SETUP SCREEN (CARD & CONTROLS) ================= */
+.setup-card {
+  background: #ffffff;
+  border: 1px solid #eaeaea;
+  border-radius: 24px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+}
+
+.control-group {
+  margin-bottom: 1.5rem;
+}
+
+.control-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #6b7280;
+  letter-spacing: 1.5px;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+}
+
+.segmented-control {
+  display: flex;
+  background-color: #f3f4f6;
+  border-radius: 12px;
+  padding: 4px;
+}
+
+.segment {
+  flex: 1;
+  text-align: center;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.segment.active {
+  background-color: #0a0a0b;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.helper-text {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-top: 0.75rem;
+}
+
+/* ================= GAME SCREEN ================= */
+.game-screen {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+}
+
+.btn-back {
+  background: none;
+  border: none;
+  font-weight: 600;
+  color: #6b7280;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.header-title {
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+.header-stats {
+  text-align: right;
+  line-height: 1.1;
+}
+
+.header-stats strong {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.header-stats span {
+  font-size: 0.75rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.progress-container {
+  height: 4px;
+  background-color: #f3f4f6;
+  width: 100%;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #0a0a0b;
+  transition: width 0.3s ease;
+}
+
+/* ================= GRID & CARDS ================= */
+.grid-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  overflow: hidden; /* Empêche le débordement */
+}
+
+.memory-grid {
+  display: grid;
+  gap: 12px;
+  width: 100%;
+  max-width: 600px;
+  height: 100%;
+  max-height: 80vh; /* Contraint la hauteur maximale */
+}
+
+.grid-4x4 {
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+
+.grid-4x6 {
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(
+    6,
+    1fr
+  ); /* 6 Lignes pour tes 24 cartes de la maquette */
+}
+
+.memory-card {
+  perspective: 1000px;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.memory-card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 16px; /* Bords bien ronds comme sur Figma */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-front {
+  background-color: #0b0c10;
+  color: #2a2a2a; /* Le point d'interrogation subtil */
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.card-back {
+  background-color: #f4f5f7;
+  border: 2px solid #e5e7eb;
+  transform: rotateY(180deg);
+}
+
+.card-emoji {
+  font-size: 4vmin;
+}
+
+.game-footer {
+  padding: 1rem 1.5rem;
+  text-align: center;
+  color: #6b7280;
+  font-weight: 600;
+  font-size: 0.9rem;
+  position: relative;
+}
+
+.help-icon {
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #111;
   color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
 }
 
-.App-link {
-  color: #61dafb;
+/* ================= VICTORY SCREEN ================= */
+.victory-particles {
+  font-size: 1.5rem;
+  letter-spacing: 10px;
 }
 
-@keyframes App-logo-spin {
+.score-card {
+  background: #ffffff;
+  border: 1px solid #eaeaea;
+  border-radius: 20px;
+  padding: 2rem 4rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  display: inline-block;
+}
+
+.score-number {
+  font-size: 4rem;
+  font-weight: 800;
+  color: #0a0a0b;
+  line-height: 1;
+}
+
+/* ================= ANIMATIONS ================= */
+.fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(10px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .memory-grid {
+    gap: 8px;
+  }
+  .card-front {
+    border-radius: 12px;
+  }
+  .card-back {
+    border-radius: 12px;
+  }
+  .setup-card {
+    padding: 1.5rem;
+    border-radius: 20px;
+  }
+  .card-emoji {
+    font-size: 6vmin;
   }
 }

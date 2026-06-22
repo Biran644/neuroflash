@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+# NeuroFlash - SEG3525 (Devoir 3)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+NeuroFlash est un prototype de jeu de mémoire (matching pairs) développé en React pour le cours de Conception d'Interfaces Utilisateur à l'Université d'Ottawa.
 
-## Available Scripts
+**[Voir le déploiement en direct sur Netlify](https://neuro-flash.netlify.app)**
 
-In the project directory, you can run:
+## Contexte du projet
 
-### `npm start`
+Habituellement plus concentré sur le développement back-end, les API et la gestion d'infrastructures DevOps, ce projet m'a permis d'explorer le côté client et l'expérience utilisateur (UX). L'objectif n'était pas seulement de faire fonctionner le jeu, mais de gérer la charge cognitive de l'utilisateur à travers l'interface.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Approche technique et UX
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+L'application a été construite pour être fonctionnelle et robuste, avec une séparation stricte entre la logique d'état (React) et le rendu visuel (CSS pur).
 
-### `npm test`
+- **Gestion d'état (State Management) :** Utilisation de `useState` et `useEffect` pour gérer les 3 flux distincts de l'application (Configuration, Jeu, Résultat) sans rechargement de page. La validation des paires est gérée de manière asynchrone avec un délai (`setTimeout`) pour permettre la mémorisation.
+- **Conception Anti-Scroll :** La grille de jeu utilise des unités relatives (`vh`, `vmin`) combinées à `overflow: hidden` sur le `body`. Cela force l'interface à s'adapter à l'écran de l'utilisateur sans jamais nécessiter de défilement, ce qui briserait l'immersion.
+- **Application de la Gestalt :** \* _Proximité et Similarité :_ Grille CSS stricte (`gap`) pour grouper les cartes.
+  - _Clôture :_ Utilisation systématique de `border-radius` pour adoucir les éléments interactifs.
+  - _Contraste :_ Espace négatif maximisé et palette de couleurs restreinte pour mettre en valeur les symboles au moment du clic.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Exécution locale
 
-### `npm run build`
+Le projet utilise Create React App. Pour tester en local :
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+git clone [https://github.com/Biran644/neuroflash.git](https://github.com/Biran644/neuroflash.git)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+cd neuroflash
+npm install
+npm start
+```
