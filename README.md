@@ -23,8 +23,7 @@ L'application a été construite pour être fonctionnelle et robuste, avec une s
 Le projet utilise Create React App. Pour tester en local :
 
 ```bash
-git clone [https://github.com/Biran644/neuroflash.git](https://github.com/Biran644/neuroflash.git)
-
+git clone https://github.com/Biran644/neuroflash.git
 cd neuroflash
 npm install
 npm start
